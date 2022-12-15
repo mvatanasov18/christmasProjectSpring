@@ -1,0 +1,19 @@
+#popup {
+    top: 11%;
+    width: 100%;
+    position: absolute;
+    height: 50%;
+    animation-duration: 2s;
+    animation-name: slidein-low;
+}
+
+@keyframes slidein-low {
+    from {
+        top: 50%;
+        opacity: 0;
+    }
+    to {
+        top: 11%;
+        opacity: 1;
+    }
+}

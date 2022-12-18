@@ -12,5 +12,10 @@ public class HomeController {
         modelAndView.setViewName("index");
         return modelAndView;
     }
-
+    @GetMapping(value = {"menus"})
+    public ModelAndView getMenus(){
+        ModelAndView modelAndView = new ModelAndView();
+        modelAndView.setViewName("menus");
+        return modelAndView;
+    }
 }

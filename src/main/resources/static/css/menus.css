@@ -1,20 +1,20 @@
-.nz {
-    top: 11%;
-    width: 100%;
-    position: absolute;
-    height: 50%;
-    animation-duration: 1.5s;
-    animation-name: slidein-low;
+body{
+    overflow-x: hidden;
 }
-
-@keyframes slidein-low {
-    from {
-        top: 50%;
-        opacity: 0;
-    }
-    to {
-        top: 11%;
-        opacity: 1;
-        position: relative;
-    }
+#top{
+    position: absolute;
+left:0;
+}
+.img{
+    position: absolute;
+    left:0;
+    top:25%;
+    width: auto;
+}
+.text{
+    width: 30%;
+    right:0;
+    position: absolute;
+    top:25%;
+    font-size: 1rem;
 }

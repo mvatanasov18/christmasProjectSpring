@@ -10,55 +10,89 @@
     <link rel="stylesheet" th:href="@{/css/style.css}">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script>
     <script>
+        let visCount = 0;
+        let quantity = 3;
+        let i = 0;
 
-        function load(size,unit) {
+        function loadImg(img, i, unit) {
+            $(img).animate({
+                left: '50%',
+                top: i + unit,
+                queue: false
+            }, 1000).hide().fadeIn({queue: false}, 2500);
+        }
 
+        function loadData(data, i, unit) {
+            $(data).animate({
+                right: '50%',
+                top: i + unit,
+                queue: false
+            }, 1000).hide().fadeIn({queue: false}, 3500);
+        }
+
+        function hideElements(list, start, end) {
+            for (let j = start; j <= end; j++) {
+                $(list[j]).hide();
+            }
+        }
+
+
+        function loadMeals(size, unit) {
             const listImg = document.querySelectorAll("#img-list");
             const listData = document.querySelectorAll("#data-list");
 
 
-            let i = size
-            listImg.forEach(element => {
+            hideElements(listData, quantity, listData.length);
+            hideElements(listImg, quantity, listImg.length);
 
-                $(element).animate({
-                    left: '50%',
-                    top: i + unit,
-                    queue: false
-                }, 1000).hide().fadeIn({queue: false}, 2500);
-
-                console.log("offset:");
-                console.log($(element).offset().top);
-                console.log(element);
-                i += size;
-            });
             i = size
-            listData.forEach(element => {
-                $(element).animate({
-                    right: '50%',
-                    top: i + unit,
-                    queue: false
-                }, 1000).hide().fadeIn({queue: false}, 3500);
+            for (let j = 0; j <= quantity; j++) {
+                loadData(listData[j], i, unit);
                 i += size;
-            });
+                visCount++;
+            }
 
+            i = size
+            for (let j = 0; j <= quantity; j++) {
+                loadImg(listImg[j], i, unit);
+                i += size;
+            }
         }
 
         function WidthChange(mq) {
             if (mq.matches) {
-                load(30,'vmax')
+                loadMeals(30, 'vmax');
 
             } else {
-                load(25,'vmin')
+                loadMeals(25, 'vmin');
             }
         }
-        $(document).ready(function() {
+
+
+        $(document).ready(function () {
             if (matchMedia) {
                 let mq = window.matchMedia("(max-width: 600px)");
                 mq.addListener(WidthChange);
                 WidthChange(mq);
             }
         });
+        let lastPosition = 0;
+        let sumDown = 0;
+        window.addEventListener('scroll', () => {
+            let element = document.querySelector("#data-list");
+            let pos = document.body.getBoundingClientRect().top;
+            if (pos < lastPosition) {
+                sumDown += lastPosition - pos;
+                if ($(element).offset().top * 2 / 3 <= sumDown) {
+                    sumDown = 0;
+                    console.log("new element")
 
+                }
+            } else {
+                    sumDown=sumDown-(lastPosition-pos);
+            }
+            lastPosition = document.body.getBoundingClientRect().top;
+        });
     </script>
 
 </head>
@@ -116,7 +150,6 @@
         </div>
     </div>
 </div>
-
 
 
 <script src="https://unpkg.com/magic-snowflakes/dist/snowflakes.min.js"></script>

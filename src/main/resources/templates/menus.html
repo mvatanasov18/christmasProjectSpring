@@ -9,28 +9,57 @@
     <link rel="stylesheet" th:href="@{/css/menus.css}">
     <link rel="stylesheet" th:href="@{/css/style.css}">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script>
-<script>
+    <script>
 
-    $(document).ready(function() {
-        const listImg = document.querySelectorAll("#img-list");
-        const listData = document.querySelectorAll("#data-list");
-        let i=25
-        listImg.forEach(element=>{
-           console.log(element);
-            $(element).animate({left: '60%',top:i+'vmin',queue: false},1000).hide().fadeIn({queue:false},2500);
+        function load(size,unit) {
 
-            i+=25;
+            const listImg = document.querySelectorAll("#img-list");
+            const listData = document.querySelectorAll("#data-list");
+
+
+            let i = size
+            listImg.forEach(element => {
+
+                $(element).animate({
+                    left: '50%',
+                    top: i + unit,
+                    queue: false
+                }, 1000).hide().fadeIn({queue: false}, 2500);
+
+                console.log("offset:");
+                console.log($(element).offset().top);
+                console.log(element);
+                i += size;
+            });
+            i = size
+            listData.forEach(element => {
+                $(element).animate({
+                    right: '50%',
+                    top: i + unit,
+                    queue: false
+                }, 1000).hide().fadeIn({queue: false}, 3500);
+                i += size;
+            });
+
+        }
+
+        function WidthChange(mq) {
+            if (mq.matches) {
+                load(30,'vmax')
+
+            } else {
+                load(25,'vmin')
+            }
+        }
+        $(document).ready(function() {
+            if (matchMedia) {
+                let mq = window.matchMedia("(max-width: 600px)");
+                mq.addListener(WidthChange);
+                WidthChange(mq);
+            }
         });
-        i=25
-        listData.forEach(element=>{
-            console.log(element);
-            $(element).animate({right: '50%',top:i+'vmin',queue: false},1000).hide().fadeIn({queue:false},3500);
-            i+=25;
-        });
 
-
-    });
-</script>
+    </script>
 
 </head>
 <body>
@@ -59,39 +88,37 @@
 
 
 <div class="grid ">
-    <div class="row text-center" id="popup" >
+    <div class="row text-center" id="popup">
         <div class="col">
-            <h4 class=" display-6">Christmas Day menu</h4>
-            <h5 class="display-6" style="font-size: 2rem">Christmas morning</h5>
+            <h4 class=" display-6" style="font-size: 2rem">Christmas Day menu</h4>
+            <h5 class="display-6" style="font-size: 1.5rem">Christmas morning</h5>
         </div>
     </div>
 
 
-    <div  class="row "  th:each="meal:${meals}" >
+    <div class="row text-center" th:each="meal:${meals}">
 
-            <img id="img-list" class="col img" th:src="${meal.photo}" style="width:25vmin; height:25vmin">
+        <img alt="qka snimka" class="col img" id="img-list" style="width:30vmin; height:25vmin" th:src="${meal.photo}">
 
-        <div class="col " >
+        <div class="col ">
             <div class="text" id="data-list">
                 <h5 th:text="${meal.name}">Crunchy granola with berries & cherries</h5>
                 <div>
                     <span th:text="${meal.timeNeeded}"></span> minutes
                 </div>
-                <div >
+                <div>
                     <span th:text="${meal.calories}"></span> calories
                 </div>
                 <div>
-                <a th:href="${meal.recipe}">recipe</a>
+                    <a th:href="${meal.recipe}">recipe</a>
                 </div>
-            </div>
-
             </div>
         </div>
     </div>
-
-
-
 </div>
+
+
+
 <script src="https://unpkg.com/magic-snowflakes/dist/snowflakes.min.js"></script>
 <script>
     new Snowflakes({

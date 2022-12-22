@@ -28,7 +28,6 @@ private static final Logger log=
                   20,
                   409,
                   "https://www.bbcgoodfood.com/recipes/crunchy-granola-berries-cherries",
-                  List.of("musli mai", "oshte neshto"),
                   "https://images.immediate.co.uk/production/" +
                           "volatile/sites/30/2020/08/recipe-image-" +
                           "legacy-id-484452_11-552ad0f.jpg?quality" +
@@ -39,10 +38,50 @@ private static final Logger log=
                   20,
                   250,
                   "https://www.bbcgoodfood.com/recipes/perfect-scrambled-eggs-recipe",
-                  List.of("qica","maslo","nesho"),
                   "https://images.immediate.co.uk/production/" +
                           "volatile/sites/30/2020/08/recipe-image-legacy" +
                           "-id-1201452_12-7f7a0fa.jpg?quality=90&webp=true&resize=375,341"
+          ));
+
+          repository.save(new Meal(
+             "Scandi smoked salmon",
+             10,
+             130,
+             "https://www.bbcgoodfood.com/recipes/scandi-smoked-salmon",
+                  "https://images.immediate.co.uk/production/volatile/sites/30/2020/08/" +
+                          "recipe-image-legacy-id-1155495_11-29b23c1.jpg?quality=90&webp=true&resize=375,341"
+          ));
+          repository.save(new Meal(
+             "Breakfast muffins",
+             45,
+             179,
+             "https://www.bbcgoodfood.com/recipes/breakfast-muffins",
+             "https://images.immediate.co.uk/production/volatile/sites/30/2020/08/" +
+                     "muffins-d49653c.jpg?quality=90&webp=true&resize=375,341"
+          ));
+          repository.save(new Meal(
+             "Super berry smoothie",
+             10,
+             120,
+             "https://www.bbcgoodfood.com/recipes/super-berry-smoothie",
+                  "https://images.immediate.co.uk/production/volatile/sites/" +
+                          "30/2020/08/recipe-image-legacy-id-901773_11-afec2d8.jpg?quality=90&webp=true&resize=375,341"
+          ));
+          repository.save(new Meal(
+             "Chocolate & almond croissants",
+             10,
+                  380,
+                  "https://www.bbcgoodfood.com/recipes/chocolate-almond-croissants",
+                  "https://images.immediate.co.uk/production/volatile/sites/30/2020/08/recipe" +
+                          "-image-legacy-id-459551_11-b93fcd9.jpg?quality=90&webp=true&resize=375,341"
+          ));
+          repository.save(new Meal(
+             "Soup maker tomato soup",
+             35,
+             85,
+             "https://www.bbcgoodfood.com/recipes/soup-maker-tomato-soup",
+             "https://images.immediate.co.uk/production/volatile/sites/30/2020/08/soup" +
+                     "-maker-tomato-soup-5f6ae46.jpg?quality=90&webp=true&resize=375,341"
           ));
         };
 }

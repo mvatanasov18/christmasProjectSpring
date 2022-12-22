@@ -26,11 +26,6 @@ private MealRepository repository;
     public ModelAndView getMenus(){
         ModelAndView modelAndView = new ModelAndView();
         modelAndView.setViewName("menus");
-        for (Meal m :
-                repository.findAll()) {
-            System.out.println(m);
-        }
-
         modelAndView.addObject("meals",repository.findAll());
         return modelAndView;
     }

@@ -18,9 +18,6 @@ private Integer timeNeeded;
 
     private String recipe;
 private String photo;
-    @ElementCollection
-    private List<String> ingredients;
-
     public Meal() {
     }
 
@@ -60,14 +57,6 @@ private String photo;
         this.recipe = recipe;
     }
 
-    public List<String> getIngredients() {
-        return ingredients;
-    }
-
-    public void setIngredients(List<String> ingredients) {
-        this.ingredients = ingredients;
-    }
-
     @Override
     public String toString() {
         return "Meal{" +
@@ -76,7 +65,6 @@ private String photo;
                 ", timeNeeded='" + timeNeeded + '\'' +
                 ", calories=" + calories +
                 ", recipe='" + recipe + '\'' +
-                ", ingredients=" + ingredients +
                 '}';
     }
 
@@ -88,12 +76,11 @@ private String photo;
         this.photo = photo;
     }
 
-    public Meal(String name, Integer timeNeeded, Integer calories, String recipe, List<String> ingredients, String photo) {
+    public Meal(String name, Integer timeNeeded, Integer calories, String recipe, String photo) {
         this.name = name;
         setTimeNeeded(timeNeeded);
         this.calories = calories;
         this.recipe = recipe;
-        this.ingredients = ingredients;
         this.photo=photo;
     }
 }

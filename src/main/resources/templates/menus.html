@@ -13,21 +13,29 @@
         let visCount = 0;
         let quantity = 3;
         let i = 0;
-
-        function loadImg(img, i, unit) {
+        let u='vmax'
+        let listImg ;
+        let listData;
+        let sizeN=25;
+        let lastPos=0;
+        function loadImg(img) {
             $(img).animate({
                 left: '50%',
-                top: i + unit,
+                top: lastPos + u,
                 queue: false
             }, 1000).hide().fadeIn({queue: false}, 2500);
+
+            lastPos+=sizeN;
         }
 
-        function loadData(data, i, unit) {
+        function loadData(data) {
             $(data).animate({
                 right: '50%',
-                top: i + unit,
+                top: lastPos + u,
                 queue: false
             }, 1000).hide().fadeIn({queue: false}, 3500);
+            lastPos+=sizeN;
+            visCount++;
         }
 
         function hideElements(list, start, end) {
@@ -37,39 +45,41 @@
         }
 
 
-        function loadMeals(size, unit) {
-            const listImg = document.querySelectorAll("#img-list");
-            const listData = document.querySelectorAll("#data-list");
+        function loadMeals() {
 
 
-            hideElements(listData, quantity, listData.length);
+
+
             hideElements(listImg, quantity, listImg.length);
-
-            i = size
+            hideElements(listData, quantity, listData.length);
             for (let j = 0; j <= quantity; j++) {
-                loadData(listData[j], i, unit);
-                i += size;
-                visCount++;
+                loadImg(listImg[j]);
+            }
+            lastPos=sizeN;
+            for (let j = 0; j <= quantity; j++) {
+                loadData(listData[j]);
             }
 
-            i = size
-            for (let j = 0; j <= quantity; j++) {
-                loadImg(listImg[j], i, unit);
-                i += size;
-            }
         }
 
         function WidthChange(mq) {
             if (mq.matches) {
-                loadMeals(30, 'vmax');
+               u='vmax';
+                sizeN=30
+                loadMeals();
 
             } else {
-                loadMeals(25, 'vmin');
+               u='vmin';
+                sizeN=25
+                loadMeals();
             }
         }
 
 
         $(document).ready(function () {
+            lastPos=sizeN
+            listImg= document.querySelectorAll("#img-list");
+            listData= document.querySelectorAll("#data-list");
             if (matchMedia) {
                 let mq = window.matchMedia("(max-width: 600px)");
                 mq.addListener(WidthChange);
@@ -78,18 +88,29 @@
         });
         let lastPosition = 0;
         let sumDown = 0;
+        let lastAdd=0;
         window.addEventListener('scroll', () => {
             let element = document.querySelector("#data-list");
             let pos = document.body.getBoundingClientRect().top;
             if (pos < lastPosition) {
-                sumDown += lastPosition - pos;
+                lastAdd=lastPosition - pos;
+                sumDown += lastAdd;
                 if ($(element).offset().top * 2 / 3 <= sumDown) {
                     sumDown = 0;
                     console.log("new element")
+                    if(visCount>=listImg.length){
+                        console.log("No more meals to show")
+                    }else{
+                        loadImg(listImg[visCount]);
+                        lastPos-=sizeN
+                        loadData(listData[visCount]);
+                    }
 
                 }
             } else {
-                    sumDown=sumDown-(lastPosition-pos);
+                sumDown=0;
+                    sumDown-=-Math.abs(lastAdd);
+
             }
             lastPosition = document.body.getBoundingClientRect().top;
         });

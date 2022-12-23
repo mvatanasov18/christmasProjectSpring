@@ -83,6 +83,30 @@ private static final Logger log=
              "https://images.immediate.co.uk/production/volatile/sites/30/2020/08/soup" +
                      "-maker-tomato-soup-5f6ae46.jpg?quality=90&webp=true&resize=375,341"
           ));
+          repository.save(new Meal(
+             "Carpaccio scallops",
+                  35,
+                  100,
+                  "https://www.bbcgoodfood.com/recipes/carpaccio-scallops",
+                  "https://images.immediate.co.uk/production/volatile/sites/30/" +
+                          "2020/08/carpaccio-scallops-3f035e7.jpg?quality=90&webp=true&resize=375,341"
+          ));
+          repository.save(new Meal(
+             "Smoked salmon with beetroot & vodka crème fraîche",
+             15,
+             190,
+             "https://www.bbcgoodfood.com/recipes/smoked-salmon-beetroot-vodka-creme-fraiche",
+                  "https://images.immediate.co.uk/production/volatile/sites/30/2020/08/recipe" +
+                          "-image-legacy-id-442491_11-14bc7a1.jpg?quality=90&webp=true&resize=375,341"
+          ));
+          repository.save(new Meal(
+             "Bloody mary seafood salad",
+             10,
+             180,
+             "https://www.bbcgoodfood.com/recipes/bloody-mary-seafood-salad",
+             "https://images.immediate.co.uk/production/volatile/sites/30/2020/09/Bloody" +
+                     "-Mary-Seafood-Salad-d774a0c.jpg?quality=90&webp=true&resize=375,341"
+          ));
         };
 }
 }

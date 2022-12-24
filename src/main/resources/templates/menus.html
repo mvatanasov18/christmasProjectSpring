@@ -26,6 +26,7 @@
             }, 1000).hide().fadeIn({queue: false}, 2500);
 
             lastPos+=sizeN;
+
         }
 
         function loadData(data) {
@@ -35,23 +36,28 @@
                 queue: false
             }, 1000).hide().fadeIn({queue: false}, 3500);
             lastPos+=sizeN;
+
             visCount++;
         }
 
         function hideElements(list, start, end) {
             for (let j = start; j <= end; j++) {
                 $(list[j]).hide();
+
             }
+        }
+
+        function moveElementToLastPos(element){
+            $(element).show()
+            $(element).animate({top:(lastPos-sizeN*3)+u},10);
+            $(element).hide()
         }
 
 
         function loadMeals() {
-
-
-
-
             hideElements(listImg, quantity, listImg.length);
             hideElements(listData, quantity, listData.length);
+
             for (let j = 0; j <= quantity; j++) {
                 loadImg(listImg[j]);
             }
@@ -95,15 +101,18 @@
             if (pos < lastPosition) {
                 lastAdd=lastPosition - pos;
                 sumDown += lastAdd;
-                if ($(element).offset().top * 2 / 3 <= sumDown) {
+                if ($(element).offset().top * 5 / 6 <= sumDown) {
                     sumDown = 0;
-                    console.log("new element")
-                    if(visCount>=listImg.length){
-                        console.log("No more meals to show")
-                    }else{
+
+                    if(visCount<=listImg.length){
+
+                        moveElementToLastPos(listImg[visCount]);
+                        moveElementToLastPos(listData[visCount]);
+
                         loadImg(listImg[visCount]);
                         lastPos-=sizeN
                         loadData(listData[visCount]);
+
                     }
 
                 }

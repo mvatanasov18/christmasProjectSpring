@@ -11,8 +11,11 @@ left:0;
     width: auto;
 }
 .text{
-    width: 30%;
+    width: 45%;
     right:0;
     position: absolute;
     font-size: 1rem;
+}
+label{
+    width: 130%;
 }

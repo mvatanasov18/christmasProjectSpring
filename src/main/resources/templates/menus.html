@@ -18,9 +18,10 @@
         let listData;
         let sizeN=25;
         let lastPos=0;
+        let isSmallDisplay=false;
         function loadImg(img) {
             $(img).animate({
-                left: '50%',
+                left: '55%',
                 top: lastPos + u,
                 queue: false
             }, 1000).hide().fadeIn({queue: false}, 2500);
@@ -29,14 +30,27 @@
 
         }
 
+        function changeDisplay(){
+            let labels=document.getElementsByTagName("label");
+            for (let label of labels) {
+                label.style.removeProperty("display")
+                if(isSmallDisplay){
+                    label.style.display="inline-block";
+                }else{
+                    label.style.display="inline";
+                }
+
+            }
+        }
+
         function loadData(data) {
             $(data).animate({
-                right: '50%',
+                right: '45%',
                 top: lastPos + u,
                 queue: false
             }, 1000).hide().fadeIn({queue: false}, 3500);
             lastPos+=sizeN;
-
+            changeDisplay()
             visCount++;
         }
 
@@ -57,7 +71,7 @@
         function loadMeals() {
             hideElements(listImg, quantity, listImg.length);
             hideElements(listData, quantity, listData.length);
-
+            lastPos=sizeN
             for (let j = 0; j <= quantity; j++) {
                 loadImg(listImg[j]);
             }
@@ -73,16 +87,19 @@
                u='vmax';
                 sizeN=30
                 loadMeals();
+                isSmallDisplay=false;
 
             } else {
                u='vmin';
-                sizeN=25
+                sizeN=29
                 loadMeals();
+                isSmallDisplay=true;
             }
         }
 
 
         $(document).ready(function () {
+
             lastPos=sizeN
             listImg= document.querySelectorAll("#img-list");
             listData= document.querySelectorAll("#data-list");
@@ -112,7 +129,14 @@
                         loadImg(listImg[visCount]);
                         lastPos-=sizeN
                         loadData(listData[visCount]);
-
+                        if(visCount==listImg.length){
+                           let submitBtn= document.getElementById("button");
+                            submitBtn.innerHTML+=
+                                "<button type=\"submit\" class=\"btn btn-primary\">Submit</button>";
+                            submitBtn.style.position='absolute';
+                            submitBtn.style.top=(lastPos)+u;
+                            submitBtn.style.right='63%';
+                        }
                     }
 
                 }
@@ -150,6 +174,7 @@
     </nav>
 </header>
 
+<form method="post" th:action="menus">
 
 <div class="grid ">
     <div class="row text-center" id="popup">
@@ -162,7 +187,7 @@
 
     <div class="row text-center" th:each="meal:${meals}">
 
-        <img alt="qka snimka" class="col img" id="img-list" style="width:30vmin; height:25vmin" th:src="${meal.photo}">
+        <img alt="qka snimka" class="col img" id="img-list" style="width:35vmin; height:25vmin" th:src="${meal.photo}">
 
         <div class="col ">
             <div class="text" id="data-list">
@@ -176,11 +201,17 @@
                 <div>
                     <a th:href="${meal.recipe}">recipe</a>
                 </div>
+                <label class="text-center" id="check"> Check for evaluation
+                    <input type="checkbox" name="meals">
+                </label>
             </div>
         </div>
+
     </div>
 </div>
-
+    <div id="button">
+    </div>
+</form>
 
 <script src="https://unpkg.com/magic-snowflakes/dist/snowflakes.min.js"></script>
 <script>

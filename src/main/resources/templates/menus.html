@@ -177,7 +177,7 @@
     </nav>
 </header>
 
-<form method="post" th:action="menus">
+<form method="post" th:object="${formData}" th:action="mens">
 
 <div class="grid ">
     <div class="row text-center" id="popup">
@@ -205,7 +205,7 @@
                     <a th:href="${meal.recipe}">recipe</a>
                 </div>
                 <label class="text-center" id="check"> Check for evaluation
-                    <input type="checkbox" name="meals">
+                    <input type="checkbox" th:value="${meal.id}" name="mealIds" th:field="*{mealIds}">
                 </label>
             </div>
         </div>

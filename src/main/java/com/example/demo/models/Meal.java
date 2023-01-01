@@ -19,6 +19,10 @@ private String photo;
     public Meal() {
     }
 
+    public Integer getId() {
+        return id;
+    }
+
     public String getName() {
         return name;
     }
@@ -59,7 +63,7 @@ private String photo;
     public String toString() {
         return "Meal{" +
                 "id=" + id +
-                ", Name='" + name + '\'' +
+                ", name='" + name + '\'' +
                 ", timeNeeded='" + timeNeeded + '\'' +
                 ", calories=" + calories +
                 ", recipe='" + recipe + '\'' +

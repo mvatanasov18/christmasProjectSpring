@@ -2,6 +2,7 @@ package com.example.demo.controllers;
 
 import com.example.demo.models.FormData;
 import com.example.demo.models.Meal;
+import com.example.demo.models.Person;
 import com.example.demo.repositories.MealRepository;
 import com.example.demo.services.MealService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -12,7 +13,7 @@ import org.springframework.web.servlet.ModelAndView;
 import java.util.ArrayList;
 import java.util.List;
 
-
+@RequestMapping(value = "/menus")
 @RestController
 public class MenuController {
     @Autowired
@@ -20,7 +21,7 @@ public class MenuController {
     @Autowired
     private MealService service;
 
-    @GetMapping(value = "/menus")
+    @GetMapping()
     public ModelAndView getMenus(){
         ModelAndView page = new ModelAndView();
         page.setViewName("menus");
@@ -28,7 +29,7 @@ public class MenuController {
         page.addObject("formData", new FormData());
         return page;
     }
-    @PostMapping(value = "/menus")
+    @PostMapping()
     public ModelAndView postMenus(@ModelAttribute("formData") FormData list) {
         ModelAndView page = new ModelAndView();
         if(list.isEmpty()) {
@@ -38,12 +39,12 @@ public class MenuController {
 
         }else{
 
-            page.setViewName("evaluation");
-
+            page.setViewName("person");
+            page.addObject("person",new Person());
             service.setFormData(list);
             service.setList(new ArrayList<>());
             service.toMeals();
-            System.out.println(service);
+            //System.out.println(service);
         }
         return page;
     }

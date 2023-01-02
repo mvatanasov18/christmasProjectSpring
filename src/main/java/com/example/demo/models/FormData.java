@@ -12,4 +12,7 @@ public class FormData {
     public void setMealIds(List<Integer> mealIds) {
         this.mealIds = mealIds;
     }
+    public boolean isEmpty(){
+        return this.mealIds.isEmpty();
+    }
 }

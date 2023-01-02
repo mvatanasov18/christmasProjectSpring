@@ -20,6 +20,7 @@ private static final Logger log=
     }
 @Bean
     public CommandLineRunner demo(MealRepository repository){
+      //loading data
         return args -> {
           repository.save(new Meal(
                   "Crunchy granola with berries & cherries",
@@ -177,6 +178,119 @@ private static final Logger log=
              40,
              "https://www.bbcgoodfood.com/recipes/easy-red-wine-gravy",
                   "/pictures/21.png"
+          ));
+          repository.save(new Meal(
+                  "Cranberry sauce with gin & rosemary",
+                  25,
+                  65,
+                  "https://www.bbcgoodfood.com/recipes/cranberry-sauce-with-gin-rosemary",
+                  "/pictures/22.png"
+          ));
+
+          repository.save(new Meal(
+                  "Red cabbage with apples",
+                  50,
+                  70,
+                  "https://www.bbcgoodfood.com/recipes/red-cabbage-apples",
+                  "/pictures/23.png"
+          ));
+          repository.save(new Meal(
+                  "Wilted spinach with nutmeg & garlic",
+                  10,
+                  70,
+                  "https://www.bbcgoodfood.com/recipes/wilted-spinach-nutmeg-garlic",
+                  "/pictures/24.png"
+          ));
+          repository.save(new Meal(
+                  "Brown butter carrots & sprout petals",
+                  40,
+                  73,
+                  "https://www.bbcgoodfood.com/recipes/brown-butter-carrots-sprout-petals",
+                  "/pictures/25.png"
+          ));
+          repository.save(new Meal(
+                  "Chipolatas wrapped in sage & pancetta",
+                  30,
+                  103,
+                  "https://www.bbcgoodfood.com/recipes/chipolatas-wrapped-sage-pancetta",
+                  "/pictures/26.png"
+          ));
+          repository.save(new Meal(
+                  "Cherry & pistachio stuffing",
+                  35,
+                  130,
+                  "https://www.bbcgoodfood.com/recipes/cherry-pistachio-stuffing",
+                  "/pictures/27.png"
+          ));
+          repository.save(new Meal(
+                  "Smoky bay bread sauce",
+                  35,
+                  137,
+                  "https://www.bbcgoodfood.com/recipes/smoky-bay-bread-sauce",
+                  "/pictures/28.png"
+          ));
+          repository.save(new Meal(
+                  "Hasselback parsnips with orange & maple syrup",
+                  45,
+                  137,
+                  "https://www.bbcgoodfood.com/recipes/hasselback-parsnips-with-orange-maple-syrup",
+                  "/pictures/29.png"
+          ));
+          repository.save(new Meal(
+                  "Chilli-charred Brussels sprouts",
+                  30,
+                  140,
+                  "https://www.bbcgoodfood.com/recipes/chilli-charred-brussels-sprouts",
+                  "/pictures/30.png"
+          ));
+          repository.save(new Meal(
+                  "Crisp honey mustard parsnips",
+                  20,
+                  150,
+                  "https://www.bbcgoodfood.com/recipes/crisp-honey-mustard-parsnips",
+                  "/pictures/31.png"
+          ));
+          repository.save(new Meal(
+                  "Lighter creamed spinach",
+                  15,
+                  150,
+                  "https://www.bbcgoodfood.com/recipes/easy-creamed-spinach-0",
+                  "/pictures/32.png"
+          ));
+          repository.save(new Meal(
+                  "Sticky mulled cider carrots",
+                  65,
+                  153,
+                  "https://www.bbcgoodfood.com/recipes/sticky-mulled-cider-carrots",
+                  "/pictures/33.png"
+          ));
+          repository.save(new Meal(
+                  "Giant pig-in-a-blanket pinwheel",
+                  25,
+                  226,
+                  "https://www.bbcgoodfood.com/recipes/giant-pig-in-a-blanket-pinwheel",
+                  "/pictures/34.png"
+          ));
+          repository.save(new Meal(
+                  "Herby roast potatoes",
+                  75,
+                  233,
+                  "https://www.bbcgoodfood.com/recipes/herby-roast-potatoes",
+                  "/pictures/35.png"
+          ));
+          repository.save(new Meal(
+                  "Gingerbread mince pies",
+                  45,
+                  300,
+                  "https://www.bbcgoodfood.com/recipes/gingerbread-mince-pies",
+                  "/pictures/36.png"
+          ));
+          repository.save(new Meal(
+                  "Christmas crinkle cookies",
+                  20,
+                  88,
+                  "https://www.bbcgoodfood.com/recipes/gingerbread-mince-pies",
+                  "/pictures/36.png"
           ));
         };
 }

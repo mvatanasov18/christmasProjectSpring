@@ -1,11 +1,12 @@
 let visCount = 0;
 let quantity = 3;
+let i = 0;
 let u='vmax'
 let listImg ;
 let listData;
 let sizeN=25;
 let lastPos=0;
-let isSmallDisplay=false;
+let isSmallDisplay=true;
 function loadImg(img) {
     $(img).animate({
         left: '55%',
@@ -29,8 +30,8 @@ function changeDisplay(){
 
     }
 }
-
 function loadData(data) {
+
     $(data).animate({
         right: '45%',
         top: lastPos + u,
@@ -64,6 +65,7 @@ function loadMeals() {
     }
     lastPos=sizeN;
     for (let j = 0; j <= quantity; j++) {
+
         loadData(listData[j]);
     }
 
@@ -71,16 +73,18 @@ function loadMeals() {
 
 function WidthChange(mq) {
     if (mq.matches) {
+        isSmallDisplay=true;
         u='vmax';
         sizeN=30
         loadMeals();
-        isSmallDisplay=false;
+
 
     } else {
+        isSmallDisplay=false;
         u='vmin';
         sizeN=29
         loadMeals();
-        isSmallDisplay=true;
+
     }
 }
 

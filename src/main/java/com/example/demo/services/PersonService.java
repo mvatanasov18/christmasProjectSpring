@@ -6,25 +6,7 @@ import org.springframework.stereotype.Service;
 @Service
 public class PersonService {
     private Person person;
-    private Double BMI;
-
-    public void changeAMR(Integer option){
-        if (option == 1) {
-            person.setAMRConstant(1.2);
-        } else if (option == 2) {
-            person.setAMRConstant(1.375);
-        } else if (option == 3) {
-            person.setAMRConstant(1.55);
-        } else if (option == 4) {
-            person.setAMRConstant(1.725);
-        } else if (option == 5) {
-            person.setAMRConstant(1.9);
-        }else{
-            System.out.println("cannot change AMR");
-        }
-    }
-
-
+    private Double calorieNeeded;
     public int calculateCalorieIntake() {
         if (person.getMale()) {
 
@@ -34,8 +16,19 @@ public class PersonService {
             return (int) ((9.247 * person.getKg()) + (3.098 * person.getHeight()) - (4.330 * person.getAge()) + 447.593);
         }
     }
+    public Person getPerson() {
+        return person;
+    }
 
-    private void calculateBMI(){
-        this.BMI= (person.getKg() / (Math.pow((float) person.getHeight()/100,2) ));
+    public Double getCalorieNeeded() {
+        return calorieNeeded;
+    }
+
+    public void setCalorieNeeded() {
+        this.calorieNeeded = this.calculateCalorieIntake()*this.person.getAMRConstant();
+    }
+
+    public void setPerson(Person person) {
+        this.person = person;
     }
 }

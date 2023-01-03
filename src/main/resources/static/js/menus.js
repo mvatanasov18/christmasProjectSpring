@@ -32,14 +32,22 @@ function changeDisplay(){
 }
 function loadData(data) {
 
+    let flag=false;
+    if(waitArray[0]===visCount-1){
+        flag=true;
+        console.log(data)
+
+    }
     $(data).animate({
         right: '45%',
         top: lastPos + u,
-        queue: false
-    }, 1000).hide().fadeIn({queue: false}, 3500);
+        queue: flag
+    }, 1000).hide().fadeIn({queue: flag}, 3500);
     lastPos+=sizeN;
     changeDisplay()
     visCount++;
+    loadTitles();
+
 }
 
 function hideElements(list, start, end) {

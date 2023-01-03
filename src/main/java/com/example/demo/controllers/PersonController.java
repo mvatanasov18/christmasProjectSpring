@@ -20,7 +20,11 @@ public class PersonController {
     public ModelAndView postPerson(@ModelAttribute("person") Person p){
         ModelAndView page = new ModelAndView();
         page.setViewName("evaluation");
-        System.out.println(mealService.sumCalories());
+
+        personService.setPerson(p);
+        personService.setCalorieNeeded();
+        page.addObject("personService",personService);
+        page.addObject("mealService",mealService);
         return page;
     }
 }

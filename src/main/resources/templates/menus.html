@@ -9,8 +9,8 @@
     <link rel="stylesheet" th:href="@{/css/menus.css}">
     <link rel="stylesheet" th:href="@{/css/style.css}">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script>
-    <script th:src="@{/js/menus.js}">
-    </script>
+    <script th:src="@{/js/menus.js}"></script>
+    <script th:src="@{/js/title.js}"></script>
 
 </head>
 <body>
@@ -37,41 +37,42 @@
     </nav>
 </header>
 
-<form method="post" th:object="${formData}" th:action="menus">
+<form method="post" th:action="menus" th:object="${formData}">
 
-<div class="grid ">
-    <div class="row text-center" id="popup">
-        <div class="col">
-            <h4 class=" display-6" style="font-size: 2rem">Christmas Day menu</h4>
-            <h5 class="display-6" style="font-size: 1.5rem">Christmas morning</h5>
-        </div>
-    </div>
-
-
-    <div class="row text-center" th:each="meal:${meals}">
-
-        <img alt="qka snimka" class="col img" id="img-list" style="width:35vmin; height:25vmin" th:src="${meal.photo}">
-
-        <div class="col ">
-            <div class="text" id="data-list">
-                <h5 th:text="${meal.name}">Crunchy granola with berries & cherries</h5>
-                <div>
-                    <span th:text="${meal.timeNeeded}"></span> minutes
-                </div>
-                <div>
-                    <span th:text="${meal.calories}"></span> calories
-                </div>
-                <div>
-                    <a th:href="${meal.recipe}">recipe</a>
-                </div>
-                <label class="text-center" id="check"> Check for evaluation
-                    <input type="checkbox" th:value="${meal.id}" name="mealIds" th:field="*{mealIds}">
-                </label>
+    <div class="grid ">
+        <div class="row text-center" id="popup">
+            <div class="col">
+                <h4 class=" display-6" style="font-size: 2rem">Christmas Day menu</h4>
+                <h5 class="display-6" style="font-size: 1.5rem">Christmas morning</h5>
             </div>
         </div>
 
+
+        <div class="row text-center" th:each="meal:${meals}"  th:id="${meal.id}">
+
+            <img alt="qka snimka" class="col img" id="img-list" style="width:35vmin; height:25vmin"
+                 th:src="${meal.photo}">
+
+            <div class="col ">
+                <div class="text" id="data-list">
+                    <h5 th:text="${meal.name}">Crunchy granola with berries & cherries</h5>
+                    <div>
+                        <span th:text="${meal.timeNeeded}"></span> minutes
+                    </div>
+                    <div>
+                        <span th:text="${meal.calories}"></span> calories
+                    </div>
+                    <div>
+                        <a th:href="${meal.recipe}">recipe</a>
+                    </div>
+                    <label class="text-center" id="check"> Check for evaluation
+                        <input name="mealIds" th:field="*{mealIds}" th:value="${meal.id}" type="checkbox">
+                    </label>
+                </div>
+            </div>
+
+        </div>
     </div>
-</div>
     <div id="button">
     </div>
 </form>

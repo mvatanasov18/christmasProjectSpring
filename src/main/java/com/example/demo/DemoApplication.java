@@ -287,10 +287,129 @@ private static final Logger log=
           ));
           repository.save(new Meal(
                   "Christmas crinkle cookies",
-                  20,
+                  30,
                   88,
-                  "https://www.bbcgoodfood.com/recipes/gingerbread-mince-pies",
-                  "/pictures/36.png"
+                  "https://www.bbcgoodfood.com/recipes/christmas-crinkle-cookies",
+                  "/pictures/37.png"
+          ));
+          repository.save(new Meal(
+                  "Christmas truffles",
+                  420,
+                  80,
+                  "https://www.bbcgoodfood.com/recipes/christmas-truffles",
+                  "/pictures/38.png"
+          ));
+          repository.save(new Meal(
+                  "Chocolate & berry mousse pots",
+                  20,
+                  160,
+                  "https://www.bbcgoodfood.com/recipes/chocolate-berry-mousse-pots",
+                  "/pictures/39.png"
+          ));
+          repository.save(new Meal(
+                  "Stollen bites",
+                  300,
+                  164,
+                  "https://www.bbcgoodfood.com/recipes/stollen-bites",
+                  "/pictures/40.png"
+          ));
+          repository.save(new Meal(
+                  "Lighter Christmas pudding",
+                  330,
+                  270,
+                  "https://www.bbcgoodfood.com/recipes/lighter-christmas-pudding",
+                  "/pictures/41.png"
+          ));
+          repository.save(new Meal(
+                  "Clementine custard tarts",
+                  45,
+                  187,
+                  "https://www.bbcgoodfood.com/recipes/clementine-custard-tarts",
+                  "/pictures/42.png"
+          ));
+          repository.save(new Meal(
+                  "Cranberry sangria",
+                  65,
+                  151,
+                  "https://www.bbcgoodfood.com/recipes/cranberry-sangria",
+                  "/pictures/43.png"
+          ));
+          repository.save(new Meal(
+                  "Mulled beer",
+                  15,
+                  163,
+                  "https://www.bbcgoodfood.com/recipes/mulled-beer",
+                  "/pictures/44.png"
+          ));
+          repository.save(new Meal(
+                  "Christmas punch",
+                  8*60,
+                  151,
+                  "https://www.bbcgoodfood.com/recipes/christmas-punch",
+                  "/pictures/45.png"
+          ));
+          repository.save(new Meal(
+                  "Espresso shrub martini",
+                  15,
+                  135,
+                  "https://www.bbcgoodfood.com/recipes/espresso-shrub-martini",
+                  "/pictures/46.png"
+          ));
+          repository.save(new Meal(
+                  "Grapefruit gin sour mocktail",
+                  5,
+                  76,
+                  "https://www.bbcgoodfood.com/recipes/grapefruit-gin-sour-mocktail",
+                  "/pictures/47.png"
+          ));
+          repository.save(new Meal(
+                  "Winter whiskey sour",
+                  10,
+                  76,
+                  "https://www.bbcgoodfood.com/recipes/winter-whiskey-sour",
+                  "/pictures/48.png"
+          ));
+          repository.save(new Meal(
+                  "Tiramisu truffles",
+                  120,
+                  132,
+                  "https://www.bbcgoodfood.com/recipes/tiramisu-truffles",
+                  "/pictures/49.png"
+          ));
+          repository.save(new Meal(
+                  "Cookie dough truffles",
+                  140,
+                  112,
+                  "https://www.bbcgoodfood.com/recipes/cookie-dough-truffles",
+                  "/pictures/50.png"
+          ));
+          repository.save(new Meal(
+                  "Reindeer & snowman chocolate bark",
+                  15,
+                  128,
+                  "https://www.bbcgoodfood.com/recipes/reindeer-snowman-bark",
+                  "/pictures/51.png"
+          ));
+          repository.save(new Meal(
+                  "Peppermint creams",
+                  25,
+                  51,
+                  "https://www.bbcgoodfood.com/recipes/peppermint-creams",
+                  "/pictures/52.png"
+          ));
+          repository.save(new Meal(
+                  "Spicy turkey noodles",
+                  25,
+                  276,
+                  "https://www.bbcgoodfood.com/recipes/spicy-turkey-noodles",
+                  "/pictures/53.png"
+          ));
+          repository.save(new Meal(
+                  "Turkey & avocado toast",
+                  15,
+                  208,
+                  "https://www.bbcgoodfood.com/recipes/turkey-avocado-toast",
+                  "/pictures/54.png"
           ));
         };
 }

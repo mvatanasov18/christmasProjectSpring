@@ -17,6 +17,11 @@ private static final Logger log=
 
         SpringApplication.run(DemoApplication.class, args);
         System.out.println("http://localhost:8080/");
+
+      System.out.println("username for h2: sa");
+      System.out.println("password for 2h: password");
+      System.out.println("url for h2: jdbc:h2:mem:testdb");
+
     }
 @Bean
     public CommandLineRunner demo(MealRepository repository){

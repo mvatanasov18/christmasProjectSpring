@@ -49,6 +49,11 @@
 
 
         <div class="row text-center" th:each="meal:${meals}"  th:id="${meal.id}">
+            <!--shh...-->
+
+
+
+
 
             <img alt="qka snimka" class="col img" id="img-list" style="width:35vmin; height:25vmin"
                  th:src="${meal.photo}">
@@ -70,6 +75,11 @@
                     </label>
                 </div>
             </div>
+<div th:if="${meal.id==6}">
+    <h1 class="display-4" id="title"  style="position: absolute;visibility: hidden" >The main event</h1>
+    <h1 ></h1>
+</div>
+
 
         </div>
     </div>

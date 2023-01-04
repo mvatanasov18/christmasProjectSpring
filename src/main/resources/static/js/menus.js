@@ -12,8 +12,8 @@ function loadImg(img) {
         left: '55%',
         top: lastPos + u,
         queue: false
-    }, 1000).hide().fadeIn({queue: false}, 2500);
-
+    }, 1000).hide().fadeIn({queue: false}, 100);
+    img.style.visibility="visible";
     lastPos+=sizeN;
 
 }
@@ -22,10 +22,13 @@ function changeDisplay(){
     let labels=document.getElementsByTagName("label");
     for (let label of labels) {
         label.style.removeProperty("display")
+
         if(isSmallDisplay){
             label.style.display="inline-block";
+
         }else{
             label.style.display="inline";
+
         }
 
     }
@@ -33,20 +36,18 @@ function changeDisplay(){
 function loadData(data) {
 
     let flag=false;
-    if(waitArray[0]===visCount-1){
-        flag=true;
-        console.log(data)
-
-    }
     $(data).animate({
         right: '45%',
         top: lastPos + u,
         queue: flag
-    }, 1000).hide().fadeIn({queue: flag}, 3500);
+    }, 1000).hide().fadeIn({queue: flag}, 1000);
+    data.style.visibility="visible"
     lastPos+=sizeN;
     changeDisplay()
     visCount++;
-    loadTitles();
+    if(visCount===6){
+        changeStyle()
+    }
 
 }
 
@@ -70,6 +71,7 @@ function loadMeals() {
     lastPos=sizeN
     for (let j = 0; j <= quantity; j++) {
         loadImg(listImg[j]);
+
     }
     lastPos=sizeN;
     for (let j = 0; j <= quantity; j++) {

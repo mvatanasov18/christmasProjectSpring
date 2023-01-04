@@ -9,12 +9,14 @@ left:0;
     position: absolute;
     left:0;
     width: auto;
+    visibility: hidden;
 }
 .text{
     width: 45%;
     right:0;
     position: absolute;
     font-size: 1rem;
+    visibility: hidden;
 }
 label{
     width: 130%;

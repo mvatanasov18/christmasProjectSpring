@@ -1,17 +1,16 @@
 package com.example.demo.models;
 
-import java.util.List;
+import lombok.*;
 
+import java.util.List;
+@Getter
+@Setter
+@ToString
+@NoArgsConstructor
 public class FormData {
     private List<Integer> mealIds;
 
-    public List<Integer> getMealIds() {
-        return mealIds;
-    }
 
-    public void setMealIds(List<Integer> mealIds) {
-        this.mealIds = mealIds;
-    }
     public boolean isEmpty(){
         return this.mealIds.isEmpty();
     }

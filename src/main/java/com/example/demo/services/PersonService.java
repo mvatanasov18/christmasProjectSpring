@@ -1,14 +1,17 @@
 package com.example.demo.services;
 
 import com.example.demo.models.Person;
+import jakarta.persistence.EntityManager;
+import jakarta.persistence.PersistenceContext;
 import org.springframework.stereotype.Service;
 
 @Service
 public class PersonService {
+
     private Person person;
     private Double calorieNeeded;
     public int calculateCalorieIntake() {
-        if (person.getMale()) {
+        if (person.getIsMale()) {
 
             return (int) ((13.397 * person.getKg()) + (4.799 * person.getHeight()) - (5.677 * person.getAge()) + 88.362);
         } else {
@@ -31,4 +34,5 @@ public class PersonService {
     public void setPerson(Person person) {
         this.person = person;
     }
+
 }

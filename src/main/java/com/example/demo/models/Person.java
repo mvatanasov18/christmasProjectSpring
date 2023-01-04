@@ -1,51 +1,55 @@
 package com.example.demo.models;
 
-import jakarta.persistence.Entity;
+import jakarta.persistence.*;
+import lombok.*;
+import org.hibernate.Hibernate;
 
+import java.util.HashSet;
+import java.util.Objects;
+import java.util.Set;
+
+@Entity
+@Getter
+@Setter
+@ToString
+@AllArgsConstructor
+@NoArgsConstructor
 public class Person {
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Integer id;
+    @Column(nullable = false)
     private Integer age;
+    @Column(nullable = false)
     private Integer height;
+    @Column(nullable = false)
     private Integer kg;
+    @Column(nullable = false)
     private Double AMRConstant;
+    @Column(nullable = false)
     private Boolean isMale;
 
-    public Integer getAge() {
-        return age;
+    @ManyToMany(fetch = FetchType.LAZY, cascade = CascadeType.PERSIST)
+    @JoinTable(name = "persons_meals",
+            joinColumns = {
+                    @JoinColumn(name = "person_id", referencedColumnName = "id",
+                            nullable = false, updatable = false)},
+            inverseJoinColumns = {
+                    @JoinColumn(name = "course_id", referencedColumnName = "id",
+                            nullable = false, updatable = false)})
+    @ToString.Exclude
+    private Set<Meal> meals = new HashSet<>();
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || Hibernate.getClass(this) != Hibernate.getClass(o)) return false;
+        Person person = (Person) o;
+        return id != null && Objects.equals(id, person.id);
     }
 
-    public void setAge(Integer age) {
-        this.age = age;
-    }
-
-    public Integer getHeight() {
-        return height;
-    }
-
-    public void setHeight(Integer height) {
-        this.height = height;
-    }
-
-    public Integer getKg() {
-        return kg;
-    }
-
-    public void setKg(Integer kg) {
-        this.kg = kg;
-    }
-
-    public Double getAMRConstant() {
-        return AMRConstant;
-    }
-
-    public void setAMRConstant(Double AMRConstant) {
-        this.AMRConstant = AMRConstant;
-    }
-
-    public Boolean getMale() {
-        return isMale;
-    }
-
-    public void setMale(Boolean male) {
-        isMale = male;
+    @Override
+    public int hashCode() {
+        return getClass().hashCode();
     }
 }

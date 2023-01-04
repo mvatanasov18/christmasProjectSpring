@@ -11,6 +11,7 @@ import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
 
 import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.List;
 
 @RequestMapping(value = "/menus")
@@ -44,7 +45,6 @@ public class MenuController {
             service.setFormData(list);
             service.setList(new ArrayList<>());
             service.toMeals();
-            //System.out.println(service);
         }
         return page;
     }

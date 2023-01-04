@@ -3,24 +3,28 @@ package com.example.demo.services;
 import com.example.demo.models.FormData;
 import com.example.demo.models.Meal;
 import com.example.demo.repositories.MealRepository;
+import jakarta.persistence.EntityManager;
+import jakarta.persistence.PersistenceContext;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
 import java.util.List;
 import java.util.stream.Collectors;
 
 @Service
 public class MealService {
-    FormData formData;
-    List<Meal> listMeal;
+    private FormData formData;
+    private List<Meal> listMeal;
 
     @Autowired
-    MealRepository repository;
+    private MealRepository repository;
 
     public MealService() {
     }
 
-    public MealService(FormData formData, List<Meal> listMeal,MealRepository repository) {
+
+    public MealService(FormData formData, List<Meal> listMeal, MealRepository repository) {
         this.formData = formData;
         this.listMeal = listMeal;
 

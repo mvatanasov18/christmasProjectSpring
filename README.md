@@ -1,6 +1,8 @@
-# neshtotoZaKoleda
+# Christmas Menu MVC - Spring Boot Project
 
-A site for choosing meals and drinks for Christmas and calculating their calories. ima i drugi neshta.
+This project represents a themed Christmas meals. Ne sa 3 menuta zashtoto ako nqkoi mu haresva edno neshto ot ednoto menu, drugo neshto ot drugoto i treto neshto ot tretoto, nqma da moje da gi izbere. The project also calculates the total calories for the meals picked and displays this information in a graph, showing the calories for drinks and desserts separately.
+
+In addition, the project has an additional page that calculates the recommended daily caloric intake for an individual based on their height and weight, and displays how many excess calories they have consumed.
 
 ## Prerequisites
 
@@ -22,7 +24,9 @@ A site for choosing meals and drinks for Christmas and calculating their calorie
 - chakash da ti izleze edin link ili pishesh v gugleto localhost:8080 
 (ili ako si gotin-motin 127.0.0.1:8080 ili oshte po-golqm gotin-motin shte si namerish localnoto ip v cmd)
 - ne klikash kopcheto shtot ne sum go opravil
+
 ![image](https://user-images.githubusercontent.com/54852701/210717711-a3669bd7-1694-499c-8b72-c59e68a5e705.png)
+
 za ei tui kopche govorq. posle shte go opravq
 - klikash v navbar-a menus
 - izbirash kot ti se qde/pie (ima viski po-dolu)

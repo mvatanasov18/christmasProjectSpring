@@ -30,6 +30,31 @@ public class MealService {
 
     }
 
+
+    public Integer sumCaloriesForDrinks(){
+        int sum=0;
+
+        for (Meal m:
+             listMeal) {
+            if (m.getIsDrink()){
+                sum+=m.getCalories();
+            }
+        }
+        return sum;
+    }
+
+    public Integer sumCaloriesForDesserts(){
+        int sum=0;
+
+        for (Meal m:
+                listMeal) {
+            if (m.getIsDessert()){
+                sum+=m.getCalories();
+            }
+        }
+        return sum;
+    }
+
     public void toMeals(){
         formData.getMealIds().forEach(id->{
             listMeal.add(repository.findMealById(id));

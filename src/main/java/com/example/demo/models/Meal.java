@@ -29,7 +29,10 @@ private Integer timeNeeded;
     private String recipe;
     @Column(nullable = false)
 private String photo;
-
+@Column
+private Boolean isDrink;
+@Column
+private Boolean isDessert;
 
     @ManyToMany(mappedBy = "meals", fetch = FetchType.LAZY)
     @ToString.Exclude
@@ -44,12 +47,14 @@ private String photo;
     }
 
 
-    public Meal(String name, Integer timeNeeded, Integer calories, String recipe, String photo) {
+    public Meal(String name, Integer timeNeeded, Integer calories, String recipe, String photo, Boolean isDrink, Boolean isDessert) {
         this.name = name;
-        setTimeNeeded(timeNeeded);
+        this.timeNeeded = timeNeeded;
         this.calories = calories;
         this.recipe = recipe;
-        this.photo=photo;
+        this.photo = photo;
+        this.isDrink = isDrink;
+        this.isDessert = isDessert;
     }
 
     @Override

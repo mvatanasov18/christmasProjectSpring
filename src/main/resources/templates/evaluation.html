@@ -8,6 +8,7 @@
           integrity="sha384-rbsA2VBKQhggwzxH7pPCaAqO46MgnOM80zW1RWuH61DGLwZJEdK2Kadq2F9CUG65" rel="stylesheet">
     <link rel="stylesheet" th:href="@{/css/style.css}">
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script>
 </head>
 <body>
 <header style="z-index: 98">
@@ -36,53 +37,83 @@
     <h2 class="display-6 d-flex justify-content-center">Evaluation</h2>
 </article>
 <article class="text-center" style="width: 100%;top:20%; position: absolute">
-<div>
-    <div th:text="${personService.calorieNeeded}">
+    <div>
+        <div th:text="${personService.calorieNeeded}">
+        </div>
+        <span>daily needed calories </span>
     </div>
-    <span>daily needed calories </span>
-</div>
     <div>
         <div th:text="${mealService.sumCalories()}">
         </div>
         <span>sum of calories from chosen meals</span>
     </div>
-    <div class="d-flex justify-content-center" style="width: 100%">
-        <canvas id="myChart" style="width:100%;max-width:300px;max-height: 300px">
-
-        </canvas>
+</article>
+<article>
+    <div class="d-flex justify-content-center" id="charts" style="width: 100%;">
+        <canvas id="chart1" style="width:100%;max-width:300px;max-height: 300px"></canvas>
+        <canvas id="chart2" style="width:100%;max-width:300px;max-height: 300px"></canvas>
+        <canvas id="chart3" style="width:100%;max-width:300px;max-height: 300px"></canvas>
     </div>
 
+    <div class="d-flex justify-content-center" style="width: 100%;">
+        <canvas id="chart4" style="width:100%;max-width:300px;max-height: 300px"></canvas>
+        <canvas id="chart5" style="width:100%;max-width:300px;max-height: 300px"></canvas>
+    </div>
 </article>
 
 <script th:inline="javascript">
     /*<![CDATA[*/
-    let sumCalc = [[${mealService.sumCalories()}]];
-    let calSum = [[${personService.calorieNeeded}]];
+    let christmas = [[${mealService.sumCalories()}]];
+    let daily = [[${personService.calorieNeeded}]];
+    let drinks = [[${mealService.sumCaloriesForDrinks()}]];
+    let dessert = [[${mealService.sumCaloriesForDesserts()}]];
+    console.log(christmas);
+    console.log(daily);
+    console.log(drinks);
+    console.log(dessert);
     /*]]>*/
 </script>
 <script>
-    var xValues = ["daily", "christmas"];
-    var yValues = [calSum, sumCalc];
-    var barColors = [
-        "#b91d47",
-        "#00aba9",
-    ];
 
-    new Chart("myChart", {
-        type: "pie",
-        data: {
-            labels: xValues,
-            datasets: [{
-                backgroundColor: barColors,
-                data: yValues
-            }]
-        },
-        options: {
-            title: {
-                display: true,
-                text: "Pie chart for your calorie intake "
+    $(document).ready(function () {
+        const charts = document.getElementById("charts");
+
+        let x1 = ["daily", "christmas"];
+        let y1 = [daily, christmas];
+        let x2 = ["drinks", "christmas"];
+        let y2 = [drinks, christmas];
+        let x3 = ["drinks", "daily"];
+        let y3 = [drinks, daily];
+        let x4 = ["dessert", "christmas"];
+        let y4 = [dessert, christmas];
+        let x5 = ["dessert", "daily"];
+        let y5 = [dessert, daily];
+
+        let barColors = [
+            "#b91d47",
+            "#00aba9",
+        ];
+
+        new Chart(document.getElementById("chart1"), {
+            type: "pie",
+            data: {
+                labels: x1,
+                datasets: [{
+                    backgroundColor: barColors,
+                    data: y1
+                }]
+            },
+            options: {
+                response: true,
+                maintainAspectRatio: true,
+                title: {
+                    display: true,
+                    text: "Pie chart for your calorie intake "
+                }
             }
-        }
+        });
+
+
     });
 </script>
 <script src="https://unpkg.com/magic-snowflakes/dist/snowflakes.min.js"></script>

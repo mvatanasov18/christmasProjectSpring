@@ -47,17 +47,7 @@
         </div>
         <span>sum of calories from chosen meals</span>
     </div>
-</article>
-<article>
     <div class="d-flex justify-content-center" id="charts" style="width: 100%;">
-        <canvas id="chart1" style="width:100%;max-width:300px;max-height: 300px"></canvas>
-        <canvas id="chart2" style="width:100%;max-width:300px;max-height: 300px"></canvas>
-        <canvas id="chart3" style="width:100%;max-width:300px;max-height: 300px"></canvas>
-    </div>
-
-    <div class="d-flex justify-content-center" style="width: 100%;">
-        <canvas id="chart4" style="width:100%;max-width:300px;max-height: 300px"></canvas>
-        <canvas id="chart5" style="width:100%;max-width:300px;max-height: 300px"></canvas>
     </div>
 </article>
 
@@ -76,44 +66,57 @@
 <script>
 
     $(document).ready(function () {
+        let chartDiv=document.getElementById("charts");
+        for(let i=1;i<6;i++){
+            chartDiv.innerHTML+="<canvas id=\"chart"+i.toString()+"\" style=\"width:100%;max-width:300px;max-height: 300px\"></canvas>"
+        }
+
+
         const charts = document.getElementById("charts");
 
-        let x1 = ["daily", "christmas"];
-        let y1 = [daily, christmas];
-        let x2 = ["drinks", "christmas"];
-        let y2 = [drinks, christmas];
-        let x3 = ["drinks", "daily"];
-        let y3 = [drinks, daily];
-        let x4 = ["dessert", "christmas"];
-        let y4 = [dessert, christmas];
-        let x5 = ["dessert", "daily"];
-        let y5 = [dessert, daily];
+        let x={
+            x1:["daily", "christmas"],
+            x2:["drinks", "christmas"],
+            x3:["drinks", "daily"],
+            x4:["dessert", "christmas"],
+            x5:["dessert", "daily"]
+        };
+        let y={
+            x1:[daily, christmas],
+            x2 : [drinks, christmas],
+            x3 : [drinks, daily],
+            x4:[dessert, christmas],
+            x5 : [dessert, daily]
+        };
 
         let barColors = [
             "#b91d47",
             "#00aba9",
         ];
+        for (let key in x) {
+            console.log(x[key]);
+            console.log(y[key])
 
-        new Chart(document.getElementById("chart1"), {
-            type: "pie",
-            data: {
-                labels: x1,
-                datasets: [{
-                    backgroundColor: barColors,
-                    data: y1
-                }]
-            },
-            options: {
-                response: true,
-                maintainAspectRatio: true,
-                title: {
-                    display: true,
-                    text: "Pie chart for your calorie intake "
+
+            new Chart(document.getElementById("chart"+key.charAt(1)), {
+                type: "pie",
+                data: {
+                    labels: x[key],
+                    datasets: [{
+                        backgroundColor: barColors,
+                        data: y[key]
+                    }]
+                },
+                options: {
+                    response: true,
+                    maintainAspectRatio: true,
+                    title: {
+                        display: true,
+                        text: "Pie chart for your calorie intake "
+                    }
                 }
-            }
-        });
-
-
+            });
+        }
     });
 </script>
 <script src="https://unpkg.com/magic-snowflakes/dist/snowflakes.min.js"></script>

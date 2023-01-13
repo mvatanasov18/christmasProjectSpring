@@ -7,6 +7,8 @@ import com.example.demo.repositories.MealRepository;
 import com.example.demo.services.MealService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.Banner;
+import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
 
@@ -15,37 +17,37 @@ import java.util.HashSet;
 import java.util.List;
 
 @RequestMapping(value = "/menus")
-@RestController
+@Controller
 public class MenuController {
+
+    private final MealRepository repository;
+    private final MealService service;
     @Autowired
-    private MealRepository repository;
-    @Autowired
-    private MealService service;
+    public MenuController(MealRepository repository,MealService service) {
+        this.repository = repository;
+        this.service = service;
+    }
 
     @GetMapping()
-    public ModelAndView getMenus(){
-        ModelAndView page = new ModelAndView();
-        page.setViewName("menus");
-        page.addObject("meals",repository.findAll());
-        page.addObject("formData", new FormData());
-        return page;
+    public String getMenus(Model model){
+        model.addAttribute("meals",repository.findAll());
+        model.addAttribute("formData", new FormData());
+        return "menus";
     }
     @PostMapping()
-    public ModelAndView postMenus(@ModelAttribute("formData") FormData list) {
-        ModelAndView page = new ModelAndView();
+    public String postMenus(@ModelAttribute("formData") FormData list,Model model) {
         if(list.isEmpty()) {
-            page.setViewName("menus");
-            page.addObject("meals",repository.findAll());
-            page.addObject("formData", new FormData());
-
+            model.addAttribute("meals",repository.findAll());
+            model.addAttribute("formData", new FormData());
+            return "menus";
         }else{
 
-            page.setViewName("person");
-            page.addObject("person",new Person());
+            model.addAttribute("person",new Person());
             service.setFormData(list);
             service.setList(new ArrayList<>());
             service.toMeals();
+            return "person";
         }
-        return page;
+
     }
 }

@@ -51,16 +51,21 @@
     </div>
 </article>
 
+<script src="https://unpkg.com/magic-snowflakes/dist/snowflakes.min.js"></script>
+<script>
+    new Snowflakes({
+        minSize: 10,
+        maxSize: 100,
+        color: '#A0E3F6',
+        wind: true
+    });
+</script>
 <script th:inline="javascript">
     /*<![CDATA[*/
     let christmas = [[${mealService.sumCalories()}]];
     let daily = [[${personService.calorieNeeded}]];
     let drinks = [[${mealService.sumCaloriesForDrinks()}]];
     let dessert = [[${mealService.sumCaloriesForDesserts()}]];
-    console.log(christmas);
-    console.log(daily);
-    console.log(drinks);
-    console.log(dessert);
     /*]]>*/
 </script>
 <script>
@@ -70,10 +75,6 @@
         for(let i=1;i<6;i++){
             chartDiv.innerHTML+="<canvas id=\"chart"+i.toString()+"\" style=\"width:100%;max-width:300px;max-height: 300px\"></canvas>"
         }
-
-
-        const charts = document.getElementById("charts");
-
         let x={
             x1:["daily", "christmas"],
             x2:["drinks", "christmas"],
@@ -94,10 +95,6 @@
             "#00aba9",
         ];
         for (let key in x) {
-            console.log(x[key]);
-            console.log(y[key])
-
-
             new Chart(document.getElementById("chart"+key.charAt(1)), {
                 type: "pie",
                 data: {
@@ -117,15 +114,6 @@
                 }
             });
         }
-    });
-</script>
-<script src="https://unpkg.com/magic-snowflakes/dist/snowflakes.min.js"></script>
-<script>
-    new Snowflakes({
-        minSize: 10,
-        maxSize: 100,
-        color: '#A0E3F6',
-        wind: true
     });
 </script>
 <script crossorigin="anonymous"

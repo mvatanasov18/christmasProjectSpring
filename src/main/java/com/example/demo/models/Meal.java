@@ -36,7 +36,7 @@ private Boolean isDessert;
 
     @ManyToMany(mappedBy = "meals", fetch = FetchType.LAZY)
     @ToString.Exclude
-    private Set<Person> students = new HashSet<>();
+    private Set<Person> persons = new HashSet<>();
 
     public void setTimeNeeded(Integer timeNeeded) {
         if(timeNeeded<=0) {

@@ -19,7 +19,7 @@ private static final Logger log=
         System.out.println("http://localhost:8080/");
 
       System.out.println("username for h2: sa");
-      System.out.println("password for 2h: password");
+      System.out.println("password for h: password");
       System.out.println("url for h2: jdbc:h2:mem:testdb");
 
     }

@@ -1,5 +1,6 @@
 package com.example.demo.models;
 
+import com.fasterxml.jackson.annotation.JsonProperty;
 import jakarta.persistence.*;
 import lombok.*;
 import org.hibernate.Hibernate;
@@ -25,6 +26,7 @@ public class Person {
     @Column(nullable = false)
     private Integer kg;
     @Column(nullable = false)
+    @JsonProperty("AMRConstant")
     private Double AMRConstant;
     @Column(nullable = false)
     private Boolean isMale;

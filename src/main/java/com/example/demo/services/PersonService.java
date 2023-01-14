@@ -29,6 +29,7 @@ public class PersonService {
 
     public void setCalorieNeeded() {
         this.calorieNeeded = this.calculateCalorieIntake()*this.person.getAMRConstant();
+        this.calorieNeeded= (double) Math.round(this.calorieNeeded);
     }
 
     public void setPerson(Person person) {

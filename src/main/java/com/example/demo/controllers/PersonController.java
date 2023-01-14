@@ -21,7 +21,7 @@ public class PersonController {
     private final PersonService personService;
     private final PersonRepository personRepository;
     private final MealRepository mealRepository;
-
+    @Autowired
     public PersonController(PersonService personService,MealService mealService,PersonRepository personRepository,MealRepository mealRepository) {
         this.personService = personService;
         this.mealService = mealService;

@@ -22,6 +22,7 @@ public class MenuController {
 
     private final MealRepository repository;
     private final MealService service;
+    @Autowired
     public MenuController(MealRepository repository,MealService service) {
         this.repository = repository;
         this.service = service;

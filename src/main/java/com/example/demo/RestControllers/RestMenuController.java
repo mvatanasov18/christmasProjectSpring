@@ -8,6 +8,7 @@ import com.example.demo.repositories.MealRepository;
 import com.example.demo.repositories.PersonRepository;
 import com.example.demo.services.MealService;
 import com.example.demo.services.PersonService;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -21,7 +22,7 @@ public class RestMenuController {
     private final PersonService personService;
     private final PersonRepository personRepository;
     private final MealRepository mealRepository;
-
+@Autowired
     public RestMenuController(PersonService personService,MealService mealService,PersonRepository personRepository,MealRepository mealRepository) {
         this.personService = personService;
         this.mealService = mealService;

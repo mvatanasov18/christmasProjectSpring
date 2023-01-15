@@ -60,7 +60,7 @@ public class MealsApiControllerTest {
         newPerson.setHeight(180);
         newPerson.setKg(65);
         newPerson.setAMRConstant(1.2);
-        newPerson.setIsMale(true);
+        newPerson.setMale(true);
 
         FormData formData=new FormData();
         formData.setMealIds(new ArrayList<>(Arrays.asList(1,2,3)));

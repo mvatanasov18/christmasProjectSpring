@@ -12,6 +12,10 @@ public class FormData {
 
 
     public boolean isEmpty(){
-        return this.mealIds.isEmpty();
+        try {
+            return this.mealIds.isEmpty();
+        }catch (NullPointerException exception){
+            return true;
+        }
     }
 }

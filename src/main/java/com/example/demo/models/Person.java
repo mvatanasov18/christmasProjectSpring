@@ -11,7 +11,6 @@ import java.util.Set;
 
 @Entity
 @Getter
-@Setter
 @ToString
 @AllArgsConstructor
 @NoArgsConstructor
@@ -53,5 +52,35 @@ public class Person {
     @Override
     public int hashCode() {
         return getClass().hashCode();
+    }
+
+    public Person setAge(Integer age) {
+        this.age = age;
+        return this;
+    }
+
+    public Person setHeight(Integer height) {
+        this.height = height;
+        return this;
+    }
+
+    public Person setKg(Integer kg) {
+        this.kg = kg;
+        return this;
+    }
+
+    public Person setAMRConstant(Double AMRConstant) {
+        this.AMRConstant = AMRConstant;
+        return this;
+    }
+
+    public Person setMale(Boolean male) {
+        isMale = male;
+        return this;
+    }
+
+    public Person setMeals(Set<Meal> meals) {
+        this.meals = meals;
+        return this;
     }
 }

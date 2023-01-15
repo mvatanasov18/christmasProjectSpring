@@ -1,11 +1,11 @@
 package com.example.demo.services;
 
 import com.example.demo.models.Person;
-import jakarta.persistence.EntityManager;
-import jakarta.persistence.PersistenceContext;
+import lombok.Getter;
 import org.springframework.stereotype.Service;
 
 @Service
+@Getter
 public class PersonService {
 
     private Person person;
@@ -18,13 +18,6 @@ public class PersonService {
 
             return (int) ((9.247 * person.getKg()) + (3.098 * person.getHeight()) - (4.330 * person.getAge()) + 447.593);
         }
-    }
-    public Person getPerson() {
-        return person;
-    }
-
-    public Double getCalorieNeeded() {
-        return calorieNeeded;
     }
 
     public void setCalorieNeeded() {

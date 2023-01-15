@@ -1,4 +1,4 @@
-package com.example.demo.RestControllers;
+package com.example.demo.ApiControllers;
 
 import com.example.demo.models.FormData;
 import com.example.demo.models.FormDataAndPerson;
@@ -16,14 +16,14 @@ import java.util.List;
 
 @RequestMapping(value = "/api/meals")
 @RestController
-public class RestMenuController {
+public class MealsApiController {
 
     private final MealService mealService;
     private final PersonService personService;
     private final PersonRepository personRepository;
     private final MealRepository mealRepository;
 @Autowired
-    public RestMenuController(PersonService personService,MealService mealService,PersonRepository personRepository,MealRepository mealRepository) {
+    public MealsApiController(PersonService personService, MealService mealService, PersonRepository personRepository, MealRepository mealRepository) {
         this.personService = personService;
         this.mealService = mealService;
         this.personRepository = personRepository;
@@ -41,9 +41,8 @@ public class RestMenuController {
     }
     @PostMapping
     public ArrayList<String> postChosenMeals(@RequestBody FormDataAndPerson formDataAndPerson){
-        System.out.println("here");
-        FormData formData = formDataAndPerson.getFormData();
-        Person person = formDataAndPerson.getPerson();
+        FormData formData = formDataAndPerson.formData();
+        Person person = formDataAndPerson.person();
         mealService.setFormData(formData);
         mealService.setList(new ArrayList<>());
         mealService.toMeals();

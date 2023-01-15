@@ -1,18 +1,17 @@
 package com.example.demo.models;
 
 import jakarta.persistence.*;
-import lombok.*;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.ToString;
 import org.hibernate.Hibernate;
-
 import java.util.HashSet;
 import java.util.Objects;
 import java.util.Set;
 
 @Entity
 @Getter
-@Setter
 @ToString
-@AllArgsConstructor
 @NoArgsConstructor
 @Table(name = "meals")
 public class Meal {
@@ -20,41 +19,43 @@ public class Meal {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
     @Column(nullable = false)
-private String name;
+    private String name;
     @Column(nullable = false)
-private Integer timeNeeded;
+    private Integer timeNeeded;
     @Column(nullable = false)
     private Integer calories;
     @Column(nullable = false)
     private String recipe;
     @Column(nullable = false)
-private String photo;
-@Column
-private Boolean isDrink;
-@Column
-private Boolean isDessert;
+    private String photo;
+    @Column
+    private Boolean isDrink;
+    @Column
+    private Boolean isDessert;
 
     @ManyToMany(mappedBy = "meals", fetch = FetchType.LAZY)
     @ToString.Exclude
     private Set<Person> persons = new HashSet<>();
 
-    public void setTimeNeeded(Integer timeNeeded) {
-        if(timeNeeded<=0) {
-            this.timeNeeded=Math.abs(timeNeeded);
-            return;
-        }
-        this.timeNeeded = timeNeeded;
-    }
 
-
-    public Meal(String name, Integer timeNeeded, Integer calories, String recipe, String photo, Boolean isDrink, Boolean isDessert) {
+    public Meal(String name, Integer timeNeeded, Integer calories, String recipe, String photo) {
         this.name = name;
         this.timeNeeded = timeNeeded;
         this.calories = calories;
         this.recipe = recipe;
         this.photo = photo;
-        this.isDrink = isDrink;
-        this.isDessert = isDessert;
+        this.isDrink = false;
+        this.isDessert = false;
+    }
+
+    public Meal setDrink(Boolean drink) {
+        isDrink = drink;
+        return this;
+    }
+
+    public Meal setDessert(Boolean dessert) {
+        isDessert = dessert;
+        return this;
     }
 
     @Override

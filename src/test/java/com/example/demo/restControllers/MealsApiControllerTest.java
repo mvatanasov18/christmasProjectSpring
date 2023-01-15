@@ -1,4 +1,4 @@
-package com.example.demo;
+package com.example.demo.restControllers;
 import com.example.demo.models.FormData;
 import com.example.demo.models.FormDataAndPerson;
 import com.example.demo.models.Meal;
@@ -21,7 +21,7 @@ import static org.junit.jupiter.api.MethodOrderer.OrderAnnotation;
 
 @SpringBootTest(webEnvironment = SpringBootTest.WebEnvironment.RANDOM_PORT)
 @TestMethodOrder(OrderAnnotation.class)
-public class RestMenuControllerTest {
+public class MealsApiControllerTest {
 
     @Autowired
     TestRestTemplate restTemplate;
@@ -65,9 +65,7 @@ public class RestMenuControllerTest {
         FormData formData=new FormData();
         formData.setMealIds(new ArrayList<>(Arrays.asList(1,2,3)));
 
-        FormDataAndPerson formDataAndPerson=new FormDataAndPerson();
-        formDataAndPerson.setPerson(newPerson);
-        formDataAndPerson.setFormData(formData);
+        FormDataAndPerson formDataAndPerson=new FormDataAndPerson(formData,newPerson);
 
         ResponseEntity<ArrayList> response = restTemplate.postForEntity(
                 "/api/meals",formDataAndPerson, ArrayList.class );
@@ -83,6 +81,6 @@ public class RestMenuControllerTest {
         return restTemplate.exchange("/api/meals",
                 HttpMethod.GET,
                 new HttpEntity<>(null),
-                new ParameterizedTypeReference<List<Meal>>() {});
+                new ParameterizedTypeReference<>() {});
     }
 }

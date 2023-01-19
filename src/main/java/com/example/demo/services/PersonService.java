@@ -11,6 +11,7 @@ public class PersonService {
     private Person person;
     private Double calorieNeeded;
     public int calculateCalorieIntake() {
+        System.out.println(person);
         if (person.getIsMale()) {
 
             return (int) ((13.397 * person.getKg()) + (4.799 * person.getHeight()) - (5.677 * person.getAge()) + 88.362);

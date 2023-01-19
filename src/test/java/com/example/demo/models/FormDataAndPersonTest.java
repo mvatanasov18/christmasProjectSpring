@@ -31,7 +31,7 @@ class FormDataAndPersonTest {
     @Test
     void person() {
         assertNotNull(fdp.person());
-        fdp.person().setAge(18).setKg(65).setAMRConstant(1.2).setHeight(180).setMale(true).setMeals(new HashSet<>());
+        fdp.person().setAge(18).setKg(65).setAMRConstant(1.2).setHeight(180).setIsMale(true).setMeals(new HashSet<>());
 
         assertEquals(fdp.person().getAge(),18);
         assertEquals(fdp.person().getKg(),65);

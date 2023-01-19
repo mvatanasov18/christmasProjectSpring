@@ -74,7 +74,7 @@ public class Person {
         return this;
     }
 
-    public Person setMale(Boolean male) {
+    public Person setIsMale(Boolean male) {
         isMale = male;
         return this;
     }

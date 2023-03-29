@@ -55,3 +55,8 @@ Include information about the license for this project here.
 - etc.
 - ChatGPT (vui tva mi spasi guza)
 btw tva readme e napolovina napraveno ot nego 
+
+
+
+
+doidoh da testvam neshto
